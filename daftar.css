@@ -1,0 +1,263 @@
+/* General Styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f0f2f5; /* Light background for the overall page */
+    color: #333;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    max-width: 1500px; /* Max width for the entire layout */
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    min-height: 700px; /* Adjust as needed */
+}
+
+/* Image Section */
+.image-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #eee; /* Placeholder background */
+    overflow: hidden;
+}
+
+.image-section img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the area */
+}
+
+/* Form Section */
+.form-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #1a2a3a; /* Dark blue background as in the image */
+    color: #fff;
+    padding: 40px;
+}
+
+.form-card {
+    width: 100%;
+    max-width: 400px; /* Max width for the form content */
+    text-align: left;
+}
+
+.form-card h1 {
+    font-size: 2.2em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.form-card p {
+    font-size: 0.9em;
+    margin-bottom: 30px;
+    color: #ccc;
+}
+
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 0.9em;
+    color: #eee;
+}
+
+.input-group input {
+    width: calc(100% - 20px); /* Adjust for padding */
+    padding: 12px 10px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #2b3e51; /* Darker input background */
+    color: #fff;
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-group input::placeholder {
+    color: #aaa;
+}
+
+.input-group input:focus {
+    border-color: #ffd700; /* Gold color on focus */
+}
+
+.btn-daftar {
+    width: 100%;
+    padding: 15px;
+    background-color: #ffd700; /* Gold color for register button */
+    color: #1a2a3a; /* Dark blue text */
+    border: none;
+    border-radius: 6px;
+    font-size: 1.1em;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 20px;
+}
+
+.btn-daftar:hover {
+    background-color: #e6c200; /* Slightly darker gold on hover */
+}
+
+.divider {
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin: 30px 0;
+    color: #aaa;
+}
+
+.divider span {
+    flex-grow: 1;
+    height: 1px;
+    background-color: #444;
+}
+
+.divider p {
+    margin: 0 15px;
+    font-size: 0.9em;
+}
+
+.btn-social {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background-color: #2b3e51;
+    color: #fff;
+    font-size: 1em;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.btn-social i {
+    margin-right: 10px;
+    font-size: 1.2em;
+}
+
+.btn-social.google:hover {
+    background-color: #dd4b39; /* Google red */
+    border-color: #dd4b39;
+}
+
+.btn-social.apple:hover {
+    background-color: #000; /* Apple black */
+    border-color: #000;
+}
+
+.login-link {
+    text-align: center;
+    margin-top: 30px;
+    font-size: 0.9em;
+    color: #ccc;
+}
+
+.login-link a {
+    color: #ffd700;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-link a:hover {
+    text-decoration: underline;
+}
+
+/* Notification Styling */
+.notification {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #4CAF50; /* Green for success */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+    z-index: 1000;
+}
+
+.notification.show {
+    opacity: 1;
+}
+
+
+/* Responsive Design */
+@media (max-width: 992px) {
+    .container {
+        flex-direction: column; /* Stack sections vertically */
+        max-width: 600px; /* Adjust max-width for tablet */
+        min-height: auto; /* Allow height to adjust */
+    }
+
+    .image-section {
+        height: 300px; /* Fixed height for image on smaller screens */
+    }
+
+    .form-section {
+        padding: 30px;
+    }
+
+    .form-card {
+        max-width: 100%; /* Take full width within its padding */
+    }
+}
+
+@media (max-width: 768px) {
+    .form-section {
+        padding: 20px;
+    }
+
+    .form-card h1 {
+        font-size: 1.8em;
+    }
+}
+
+@media (max-width: 576px) {
+    body {
+        padding: 15px; /* Add some padding to the body on very small screens */
+    }
+    .container {
+        border-radius: 0; /* No border-radius on very small screens to fit edge to edge */
+        box-shadow: none; /* No shadow */
+        width: 100%;
+    }
+    .form-section {
+        padding: 20px 15px;
+    }
+    .form-card h1 {
+        font-size: 1.5em;
+    }
+    .form-card p {
+        font-size: 0.8em;
+    }
+    .input-group input {
+        padding: 10px;
+    }
+    .btn-daftar, .btn-social {
+        padding: 12px;
+        font-size: 1em;
+    }
+}

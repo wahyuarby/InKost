@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelola Kost - INKOST</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <style>
+        /* --- Variabel Warna & Reset Dasar --- */
+        :root {
+            --dark-blue: #0b192f;
+            --dark-card: #2d2d34; 
+            --light-grey: #f0f2f5;
+            --yellow: #f7bf28;
+            --white: #ffffff;
+            --text-color: #ffffff;
+            --text-light: #ffffff;
+            --border-color: #444; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            background-color: var(--dark-blue); 
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        h1, h2, h3 { font-weight: 600; color: var(--white); }
+        h1{font-size: 3em;} h2{font-size: 2.2em;} h3{font-size: 1.4em;}
+        p { color: var(--text-light); }
+
+        /* --- Header --- */
+        header { 
+            background-color: var(--dark-blue); 
+            color: var(--white); 
+            padding: 15px 0; 
+            position: sticky; 
+            top: 0; 
+            z-index: 1000; 
+            border-bottom: 1px solid var(--border-color); 
+        }
+        header .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.8em; font-weight: 700; letter-spacing: 1px; }
+        header nav { display: flex; align-items: center; gap: 25px; }
+        header nav ul { display: flex; align-items: center; gap: 25px; }
+        header nav a { color: var(--white); font-weight: 500; transition: color 0.3s; }
+        header nav a:hover { color: var(--yellow); }
+        .user-profile-icon { font-size: 1.6rem; }
+        .hamburger-menu { display: none; font-size: 1.5rem; background: none; border: none; color: white; cursor: pointer; z-index: 10; }
+
+        /* --- Tombol (Buttons) --- */
+        .btn { padding: 10px 25px; border-radius: 8px; font-weight: 600; display: inline-block; text-align: center; transition: all 0.3s; }
+        .btn-primary { background-color: var(--yellow); color: var(--dark-blue); border: 2px solid var(--yellow); }
+        .btn-primary:hover { background-color: #e0ac24; border-color: #e0ac24; }
+        .btn-secondary { background-color: transparent; color: var(--white); border: 2px solid var(--border-color); }
+        .btn-secondary:hover { background-color: var(--border-color); }
+        .full-width { width: 100%; }
+
+        /* --- Hero Section Halaman Kelola --- */
+        .hero-kelola { padding: 60px 0; position: relative; background: url('https://images.unsplash.com/photo-1580587771525-78b9dba3b914?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w1NTA3ODV8MHwxfGFsbHx8fHx8fHx8fDE3MTgyNTg1NDV8&ixlib=rb-4.0.3&q=80&w=1080') no-repeat center center/cover; }
+        .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(11, 25, 47, 0.7); }
+        .hero-content-kelola { position: relative; z-index: 2; text-align: center; max-width: 800px; margin: 0 auto; }
+        .hero-content-kelola .breadcrumbs { margin-bottom: 15px; font-size: 0.9em; font-weight: 500; color: var(--text-light); }
+        .hero-content-kelola h1 { margin-bottom: 15px; }
+
+        /* --- Bar Pencarian --- */
+        .search-section { padding: 10px 0; background-color: var(--dark-blue); transform: translateY(-50%); margin-bottom: -70px; position: relative; z-index: 5; }
+        .search-bar { display: flex; background-color: var(--dark-card); padding: 15px; border-radius: 12px; justify-content: space-between; align-items: center; gap: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
+        .search-item { display: flex; align-items: center; gap: 10px; padding: 10px 15px; background-color: var(--dark-blue); border-radius: 8px; color: var(--white); flex-grow: 1; }
+        .search-item i { color: var(--yellow); }
+        .number-input { padding: 0; justify-content: center; }
+        .number-input button { background: none; border: none; color: var(--yellow); font-size: 1.5em; cursor: pointer; padding: 5px 15px; }
+        .number-input input { background: none; border: none; color: white; width: 30px; text-align: center; font-size: 1em; font-weight: 600; padding: 0; }
+        .search-bar > .btn-primary { flex-shrink: 0; }
+
+        /* --- Bagian Konten Utama --- */
+        .main-content-area { background-color: #0A192F; /* Sedikit lebih terang dari biru tua */ padding: 120px 0 80px 0;}
+        .main-content-area .section-header { text-align: center; max-width: 700px; margin: 0 auto 50px auto; }
+
+        /* --- Kartu Informasi --- */
+        .info-cards-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; }
+        .card-dark { background-color: var(--dark-card); border: 1px solid var(--border-color); border-radius: 12px; padding: 25px; text-align: center; display: flex; flex-direction: column; gap: 15px; }
+        .card-header-icon i { font-size: 2em; color: var(--yellow); }
+        .card-dark h3 { margin-top: 10px; margin-bottom: -10px; }
+        .card-subtitle { font-size: 0.9em; color: #888; }
+        .card-user-info { display: flex; align-items: center; justify-content: center; gap: 10px; background-color: var(--dark-blue); padding: 8px; border-radius: 8px; font-size: 0.9em; }
+        .card-user-info i { font-size: 1.2em; }
+        .card-date { font-size: 0.9em; }
+        .card-buttons { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: auto; }
+
+        /* --- Bagian Bantuan --- */
+        .bantuan-section { padding: 80px 0; }
+        .bantuan-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 50px; align-items: center; }
+        .bantuan-info .subtitle { margin: 20px 0; }
+        .bantuan-info ul { list-style: none; }
+        .bantuan-info ul li { margin-bottom: 15px; display: flex; align-items: center; gap: 10px; }
+        .bantuan-info ul i { color: var(--yellow); }
+        .bantuan-info .btn { margin-top: 20px; }
+        .bantuan-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; }
+
+        /* --- Footer --- */
+        footer { background-color: #0b192f; color: var(--text-light); padding-top: 60px; border-top: 1px solid var(--border-color); }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1.5fr; gap: 40px; padding-bottom: 40px; }
+        .footer-col .logo { display: inline-block; margin-bottom: 20px; color: var(--white); }
+        .footer-col p { font-size: 0.9em; max-width: 300px; }
+        .social-icons { margin-top: 20px; display: flex; gap: 15px; }
+        .social-icons a { color: var(--text-light); font-size: 1.2em; transition: color 0.3s; }
+        .social-icons a:hover { color: var(--yellow); }
+        .footer-col h3 { color: var(--white); margin-bottom: 20px; font-size: 1.2em; }
+        .footer-col.links ul li { margin-bottom: 10px; }
+        .footer-col.links a::before { content: '>'; margin-right: 10px; }
+        .footer-col.links a:hover { color: var(--yellow); padding-left: 5px; transition: all 0.3s; }
+        .footer-col.contact ul li { display: flex; align-items: center; gap: 15px; margin-bottom: 15px; }
+        .footer-col.contact i { color: var(--yellow); }
+        .footer-bottom { border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; padding: 20px 0; font-weight: 500; }
+
+        /* --- Media Queries untuk Responsivitas --- */
+        @media (max-width: 992px) {
+            .info-cards-grid { grid-template-columns: 1fr 1fr; }
+            .bantuan-grid { grid-template-columns: 1fr; text-align: center; }
+            .bantuan-info ul li { justify-content: center; }
+            .search-bar { flex-wrap: wrap; }
+            .search-item { width: 48%; }
+            .search-bar > .btn-primary { width: 100%; margin-top: 10px; }
+            .footer-content { grid-template-columns: 1fr; text-align: center; }
+            .footer-col p, .footer-col ul { margin: 0 auto; }
+            .social-icons, .footer-col.contact ul li { justify-content: center; }
+        }
+
+        @media (max-width: 768px) {
+            h1 { font-size: 2em !important; } h2 { font-size: 1.8em !important; }
+
+            .hamburger-menu { display: block; }
+            header nav { 
+                display: none; 
+                position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+                background-color: var(--dark-blue); 
+                flex-direction: column; justify-content: center; align-items: center; gap: 40px; 
+            }
+            header nav.active { display: flex; }
+            header nav ul { flex-direction: column; gap: 30px; text-align: center; padding: 0;}
+            header nav .btn-login { padding: 12px 40px; }
+            header nav .user-profile-icon { margin-top: 20px; font-size: 2.5rem;}
+            
+            .search-item { width: 100%; }
+            .info-cards-grid, .bantuan-cards { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <a href="home.html" class="logo-container" style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                <img src="Img/logo1.PNG" alt="Inkost Logo" style="height: 40px; margin-right: 10px;">
+                
+                <span style="font-size: 1.8em; font-weight: 700; letter-spacing: 1px;">INKOST</span>
+            </a>
+            <nav id="main-nav">
+                <ul>
+                    <li><a href="home.html">BERANDA</a></li>
+                    <li><a href="tentang_kami.html">TENTANG KAMI</a></li>
+                    <li><a href="profil_inkos.html">PROFILE</a></li>
+                </ul>
+                <a href="index.html" class="btn btn-primary btn-login">KELUAR</a>
+                <a href="profil_inkos.html" class="user-profile-icon"><i class="fas fa-user-circle"></i></a>
+            </nav>
+            <button class="hamburger-menu" id="hamburger">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero-kelola">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content-kelola">
+                <div class="breadcrumbs">
+                    <p>HOMEPAGE > LIST KOST</p>
+                </div>
+                <h1>Kelola Kost Lebih Mudah<br>Dengan Inkost</h1>
+                <p>Aplikasi manajemen kos modern untuk pemilik dan penyewa, semuanya jadi gampang dari pembayaran hingga komunikasi.</p>
+            </div>
+        </section>
+
+        <div class="search-section">
+            <div class="container">
+                <div class="search-bar">
+                    <div class="search-item"><i class="fas fa-tag"></i><span>Premium</span></div>
+                    <div class="search-item"><i class="fas fa-calendar-alt"></i><span>1 Mei - 31 Mei 2025</span></div>
+                    <div class="search-item number-input"><button>-</button><input type="text" value="2" readonly><button>+</button></div>
+                    <button class="btn btn-primary">Cari</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="main-content-area">
+            <section class="cerita-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2>Setiap Kost Punya Cerita, Jadikan Ceritamu Lebih Nyaman di InKost.</h2>
+                    </div>
+                    <div class="info-cards-grid">
+                        <div class="card-dark">
+                            <div class="card-header-icon"><i class="fas fa-wallet"></i></div>
+                            <h3>Pembayaran Kost</h3>
+                            <p class="card-subtitle">No. Kamar 01</p>
+                            <div class="card-user-info"><i class="fas fa-user-circle"></i><span>BAGUS</span></div>
+                            <p class="card-date">1 Mei - 31 Mei 2025</p>
+                            <a href="PembayaranKost.html" class="btn btn-primary full-width">Lihat Selengkapnya</a>
+                        </div>
+                        <div class="card-dark">
+                            <div class="card-header-icon"><i class="fas fa-wifi"></i></div>
+                            <h3>Pembayaran Wifi</h3>
+                            <p class="card-subtitle">No. Kamar 01</p>
+                            <div class="card-user-info"><i class="fas fa-user-circle"></i><span>Provider Wifi | Kamar 02 Wifi</span></div>
+                            <p class="card-date">1 Mei - 31 Mei 2025</p>
+                            <a href="PembayaranWifi.html" class="btn btn-primary full-width">Lihat Selengkapnya</a>
+                        </div>
+                        <div class="card-dark">
+                            <div class="card-header-icon"><i class="fas fa-dollar-sign"></i></div>
+                            <h3>Uang kas</h3>
+                            <p class="card-subtitle">No. Kamar 01</p>
+                            <div class="card-user-info"><i class="fas fa-user-circle"></i><span>Victor | Kebersihan | Sampah</span></div>
+                            <p class="card-date">1 Mei - 31 Mei 2025</p>
+                            <div class="card-buttons">
+                                <a href="#" class="btn btn-secondary">Hubungi</a>
+                                <a href="PembayaranKas.html" class="btn btn-primary">Lihat Selengkapnya</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="bantuan-section">
+                <div class="container bantuan-grid">
+                    <div class="bantuan-info">
+                        <h2>Kenyamanan Di Setiap Layanan</h2>
+                        <p class="subtitle">Fasilitas Rusak Mau Di Benerin? <strong>Bisa!</strong><br>Ngecek Bersihin Kamar? <strong>Home Cleaning Solusinya</strong></p>
+                        <ul>
+                            <li><i class="fas fa-check-circle"></i> Pemberesihan Menyeluruh</li>
+                            <li><i class="fas fa-check-circle"></i> Tenaga Kerja yang Berpengalaman</li>
+                            <li><i class="fas fa-check-circle"></i> Harga Mulai Dari 25Rb an</li>
+                            <li><i class="fas fa-check-circle"></i> Cocok Untuk Harian, Mingguan</li>
+                        </ul>
+                        <a href="#" class="btn btn-primary">Cek Semua Layanan</a>
+                    </div>
+                    <div class="bantuan-cards">
+                        <div class="card-dark">
+                            <div class="card-header-icon"><i class="fas fa-broom"></i></div>
+                            <h3>Room Cleaning</h3>
+                            <p class="card-subtitle">No. Kamar 01</p>
+                            <div class="card-user-info"><i class="fas fa-tag"></i><span>Tipe Layanan | Premium</span></div>
+                            <p class="card-date">1 Mei - 31 Mei 2025</p>
+                            <a href="#" class="btn btn-primary full-width" id="btn-home-cleaning">Pesan</a>
+                        </div>
+                        <div class="card-dark">
+                            <div class="card-header-icon"><i class="fas fa-tools"></i></div>
+                            <h3>Layanan Barang Rusak</h3>
+                            <p class="card-subtitle">No. Kamar 01</p>
+                            <div class="card-user-info"><i class="fas fa-tag"></i><span>Tipe Layanan | Premium</span></div>
+                            <p class="card-date">1 Mei - 31 Mei 2025</p>
+                            <a href="#" class="btn btn-primary full-width" id="btn-layanan-rusak">Pesan</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-col about">
+                <a href="home.html" class="logo"style="display: flex; align-items: center; text-decoration: none; color: inherit;">
+                    <img src="Img/logo1.PNG" alt="Inkost Logo" style="height: 40px; margin-right: 10px;">
+                    <span style="font-size: 1.8em; font-weight: 700; letter-spacing: 1px;">INKOST</span></a>
+                <p>Aplikasi terbaik untuk layanan kost di properti teknologi terdepan di zaman modern saat ini.</p><div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-twitter"></i></a><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-youtube"></i></a></div></div>
+            <div class="footer-col links"><h3>Quick Links</h3><ul><li><a href="#">Beranda</a></li><li><a href="#">Tentang Kami</a></li><li><a href="#">Profile</a></li></ul></div>
+            <div class="footer-col contact"><h3>Tetap bersama kami</h3><ul><li><i class="fas fa-map-marker-alt"></i> Di Yogyakarta, Indonesia</li><li><i class="fas fa-envelope"></i> inkost123@email.com</li><li><i class="fas fa-phone-alt"></i> (+62) 123 456 789</li></ul></div>
+        </div>
+        <div class="footer-bottom"><p>INKOST</p></div>
+    </footer>
+
+
+    <script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const hamburger = document.getElementById('hamburger');
+        const navMenu = document.getElementById('main-nav');
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                navMenu.classList.toggle('active');
+            });
+        }
+
+        // --- TAMBAHAN KODE UNTUK TOMBOL PESAN ---
+        const btnHomeCleaning = document.getElementById('btn-home-cleaning');
+        const btnLayananRusak = document.getElementById('btn-layanan-rusak');
+
+        if (btnHomeCleaning) {
+            btnHomeCleaning.addEventListener('click', (event) => {
+                event.preventDefault(); // Mencegah link default behavior (melompat ke #)
+                alert("Pesanan layanan Anda berhasil!");
+            });
+        }
+
+        if (btnLayananRusak) {
+            btnLayananRusak.addEventListener('click', (event) => {
+                event.preventDefault(); // Mencegah link default behavior (melompat ke #)
+                alert("Pesanan layanan Anda berhasil!");
+            });
+        }
+        // ------------------------------------------
+    });
+    </script>
+
+</body>
+</html>

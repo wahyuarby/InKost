@@ -1,0 +1,1031 @@
+/* ========================================================= */
+/* Global Styles & Reset */
+/* ========================================================= */
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f4f7f6;
+    /* Light gray background */
+    color: #333;
+    /* Dark gray for general text */
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    /* Padding for horizontal spacing */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Clearfix for floats (if any, good practice) */
+.clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* ========================================================= */
+/* Header Section */
+/* ========================================================= */
+.header {
+    background-color: #183b4e;
+    /* Dark blue/gray */
+    color: #fff;
+    padding: 15px 0;
+    position: relative;
+    z-index: 1000;
+    /* Ensure header is on top */
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    /* Allows items to wrap onto new lines on smaller screens */
+}
+
+.header .logo {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+    font-weight: 600;
+    flex-shrink: 0;
+    /* Prevents logo from shrinking */
+    color: #fff;
+}
+
+.header .logo img {
+    height: 40px;
+    /* Adjust logo size */
+    margin-right: 10px;
+}
+
+/* Navigation Bar */
+.header .navbar {
+    flex-grow: 1;
+    /* Allows navbar to take available space */
+    display: flex;
+    justify-content: flex-end;
+    /* Pushes nav items to the right */
+}
+
+.header .navbar ul {
+    display: flex;
+    align-items: center;
+}
+
+.header .navbar ul li {
+    margin-left: 30px;
+    position: relative;
+    /* Needed for dropdown positioning */
+}
+
+.header .navbar ul li a {
+    color: #fff;
+    font-weight: 500;
+    padding: 5px 0;
+    /* Add padding for better click area */
+    transition: color 0.3s ease;
+    white-space: nowrap;
+    /* Prevent text wrapping */
+}
+
+.header .navbar ul li a:hover {
+    color: #f4c430;
+    /* Blue hover effect */
+}
+
+/* Dropdown Menu Styles */
+.dropdown-content {
+    display: none;
+    /* Hidden by default */
+    position: absolute;
+    background-color: #1a2a3a;
+    /* Same as header background */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden;
+    /* For rounded corners */
+    left: 0;
+    /* Align dropdown to the left of parent */
+    top: 100%;
+    /* Position below the parent link */
+    margin-top: 5px;
+    /* Small gap */
+}
+
+.dropdown-content a {
+    color: #f4c430;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    transition: background-color 0.3s ease;
+}
+
+.dropdown-content a:hover {
+    background-color: black;
+    /* Hover color for dropdown items */
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown.active .dropdown-content {
+    /* Show dropdown on hover (desktop) or active class (mobile JS) */
+    display: block;
+}
+
+.dropdown a i.fa-caret-down {
+    margin-left: 5px;
+    transition: transform 0.3s ease;
+}
+
+.dropdown.active a i.fa-caret-down {
+    transform: rotate(180deg);
+    /* Rotate arrow when dropdown is active */
+}
+
+/* Top Right Navigation (Profile & Logout) */
+.top-right-nav {
+    display: flex;
+    align-items: center;
+    margin-left: 30px;
+    /* Space from the main navbar */
+    flex-shrink: 0;
+    /* Prevent shrinking */
+}
+
+.top-right-nav .profile-link {
+    color: #fff;
+    font-weight: 500;
+    margin-right: 20px;
+    transition: color 0.3s ease;
+    white-space: nowrap;
+}
+
+.top-right-nav .profile-link:hover {
+    color: #f4c430;
+}
+
+.top-right-nav .logout-btn {
+    background-color: #f4c430;
+    /* Blue button */
+    padding: 8px 20px;
+    border-radius: 5px;
+    color: black;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+
+.top-right-nav .logout-btn:hover {
+    background-color: #fff;
+    /* Darker blue on hover */
+}
+
+/* Hamburger Menu Icon */
+.hamburger-menu {
+    display: none;
+    /* Hidden by default on desktop */
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: relative;
+    z-index: 1001;
+    /* Ensure it's on top */
+    margin-left: 20px;
+}
+
+.hamburger-menu .bar {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background-color: #fff;
+    margin: 5px auto;
+    transition: all 0.3s ease-in-out;
+}
+
+/* Hamburger Menu Animation */
+.hamburger-menu.active .bar:nth-child(2) {
+    opacity: 0;
+    /* Middle bar fades out */
+}
+
+.hamburger-menu.active .bar:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    /* Top bar rotates */
+}
+
+.hamburger-menu.active .bar:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    /* Bottom bar rotates */
+}
+
+
+/* ========================================================= */
+/* Hero Section */
+/* ========================================================= */
+.hero {
+    position: relative;
+    height: 300px;
+    /* Fixed height for the hero section */
+    background-image: url('Img/Malikamila.jpg');
+    /* Replace with your background image */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    /* Vertically center content */
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    /* Text shadow for readability */
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    /* Dark overlay */
+}
+
+.hero-content {
+    position: relative;
+    z-index: 1;
+    text-align: left;
+}
+
+.hero .breadcrumb {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #ccc;
+}
+
+.hero .breadcrumb span {
+    margin: 0 5px;
+    color: #fff;
+}
+
+.hero h1 {
+    font-size: 48px;
+    margin-bottom: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+.hero-description {
+    font-size: 18px;
+    line-height: 1.6;
+    max-width: 700px;
+    opacity: 0.9;
+}
+
+/* ========================================================= */
+/* Main Content - Room Listings & Map */
+/* ========================================================= */
+.main-content-wrapper {
+    padding: 60px 0;
+    background-color: #183b4e;
+}
+
+.main-content-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    /* 2/3 for room listings, 1/3 for map */
+    gap: 40px;
+    /* Gap between columns */
+    align-items: start;
+    /* Align items to the top of their grid area */
+}
+
+/* Room Listings Section */
+.room-listings {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    /* Space between each room card */
+}
+
+.room-card {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    display: flex;
+    /* Layout for image and details */
+    overflow: hidden;
+    /* Ensures rounded corners on image */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.room-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.room-image {
+    flex: 0 0 350px;
+    /* Fixed width for the image column */
+    height: 350px;
+    /* Fixed height for the image */
+    overflow: hidden;
+}
+
+.room-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Ensures image covers the area without distortion */
+    display: block;
+}
+
+.room-details {
+    padding: 20px 25px;
+    flex-grow: 1;
+    background-color: #FFFFF0;
+    /* Allows details to take remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    /* Pushes content to top/bottom */
+}
+
+.room-details h3 {
+    font-size: 22px;
+    margin-top: 0;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.room-details .location-info {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.room-details .location-info i {
+    margin-right: 8px;
+    color: #f4c430;
+    /* Blue icon */
+}
+
+.room-details .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns for features */
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #555;
+    font-size: 15px;
+}
+
+.room-details .features li {
+    display: flex;
+    align-items: center;
+}
+
+.room-details .features li i {
+    margin-right: 8px;
+    color: #f4c430;
+    /* Blue icon */
+}
+
+.room-details .price-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    /* Align "Harga Mulai" and price */
+    margin-top: auto;
+    /* Pushes price info to the bottom */
+}
+
+.room-details .price-info p {
+    margin: 0;
+    font-size: 15px;
+    color: #777;
+}
+
+.room-details .price-info .price {
+    font-size: 24px;
+    font-weight: 700;
+    color: #333;
+}
+
+.view-details-btn {
+    background-color: #f4c430;
+    color: black;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+    align-self: flex-end;
+    /* Aligns button to the bottom-right */
+    margin-top: 20px;
+    /* Space from price info */
+}
+
+.view-details-btn:hover {
+    background-color: #fff;
+}
+
+/* Map Section */
+.map-section {
+    background-color: #fffff0;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    padding: 25px;
+    text-align: center;
+    position: sticky;
+    /* Makes the map stick when scrolling */
+    top: 20px;
+    /* Distance from the top when sticky */
+    align-self: start;
+    /* Ensures it aligns to the top of its grid cell */
+    height: fit-content;
+    /* Only take necessary height */
+}
+
+.map-section h2 {
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.map-placeholder {
+    width: 100%;
+    height: 300px;
+    /* Fixed height for the map placeholder */
+    background-color: #e0e0e0;
+    /* Gray background for placeholder */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #888;
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    /* For positioning address text */
+}
+
+.map-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.map-placeholder .map-address {
+    position: absolute;
+    bottom: 15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Semi-transparent black background */
+    color: #fff;
+    padding: 8px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    /* Prevent address text wrapping */
+}
+
+.map-placeholder .map-address i {
+    margin-right: 8px;
+    color: #fff;
+}
+
+
+/* ========================================================= */
+/* Footer Section */
+/* ========================================================= */
+.footer {
+    background-color: #183b4e;
+    /* Dark blue/gray */
+    color: #fff;
+    padding: 50px 0 20px;
+    text-align: center;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    /* Allows sections to wrap */
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.footer-logo {
+    flex: 1;
+    min-width: 250px;
+    margin-right: 30px;
+}
+
+.footer-logo img {
+    height: 40px;
+    margin-bottom: 15px;
+}
+
+.footer-logo span {
+    font-size: 28px;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 10px;
+}
+
+.footer-logo p {
+    font-size: 14px;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 20px;
+}
+
+.social-icons a {
+    color: #fff;
+    font-size: 18px;
+    margin-right: 15px;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #1a73e8;
+}
+
+.quick-links,
+.contact-info {
+    flex: 1;
+    min-width: 200px;
+    margin-left: 30px;
+}
+
+.quick-links h3,
+.contact-info h3 {
+    font-size: 20px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    position: relative;
+}
+
+.quick-links h3::after,
+.contact-info h3::after {
+    content: '';
+    display: block;
+    width: 50px;
+    height: 3px;
+    background-color: #f4c430;
+    /* Blue underline */
+    margin-top: 10px;
+}
+
+.quick-links ul li,
+.contact-info ul li {
+    margin-bottom: 15px;
+    font-size: 15px;
+    color: #ccc;
+    display: flex;
+    align-items: center;
+}
+
+.quick-links ul li i,
+.contact-info ul li i {
+    margin-right: 10px;
+    color: #f4c430;
+}
+
+.quick-links ul li a {
+    color: #ccc;
+    transition: color 0.3s ease;
+}
+
+.quick-links ul li a:hover {
+    color: #fff;
+}
+
+.footer-bottom {
+    border-top: 1px solid #334455;
+    /* Separator line */
+    padding-top: 20px;
+    margin-top: 30px;
+    font-size: 14px;
+    color: #ccc;
+}
+
+
+/* ========================================================= */
+/* Responsive Design (Media Queries) */
+/* ========================================================= */
+
+/* Tablets and small desktops (max-width: 992px) */
+@media (max-width: 992px) {
+
+    /* Header adjustments */
+    .header .container {
+        flex-direction: column;
+        /* Stack logo, nav, and top-right-nav */
+        align-items: center;
+    }
+
+    .header .logo {
+        margin-bottom: 15px;
+    }
+
+    .header .navbar {
+        order: 2;
+        /* Move navbar below logo */
+        flex-basis: 100%;
+        /* Take full width */
+        margin-top: 15px;
+        justify-content: center;
+    }
+
+    .header .navbar ul {
+        flex-wrap: wrap;
+        /* Allow nav items to wrap */
+        justify-content: center;
+        gap: 10px 20px;
+        /* Gap between nav items */
+    }
+
+    .header .navbar ul li {
+        margin-left: 0;
+        /* Remove default left margin */
+    }
+
+    .top-right-nav {
+        order: 1;
+        /* Keep top-right-nav near the logo */
+        margin-left: auto;
+        /* Push to the right if space allows */
+        margin-top: 15px;
+        /* Space from logo if stacked */
+        width: 100%;
+        /* Take full width */
+        justify-content: center;
+        /* Center buttons */
+    }
+
+    /* Main content grid adjusts to single column */
+    .main-content-grid {
+        grid-template-columns: 1fr;
+        /* Single column layout */
+        gap: 40px;
+    }
+
+    /* Room card layout change */
+    .room-card {
+        flex-direction: column;
+        /* Stack image and details vertically */
+        align-items: center;
+    }
+
+    .room-image {
+        flex: none;
+        /* Remove flex properties */
+        width: 100%;
+        /* Image takes full width */
+        height: 250px;
+        /* Adjust image height */
+    }
+
+    .room-details {
+        width: 100%;
+        text-align: center;
+        /* Center text within details */
+    }
+
+    .room-details .location-info,
+    .room-details .features li {
+        justify-content: center;
+        /* Center icon and text */
+    }
+
+    .room-details .price-info {
+        flex-direction: column;
+        /* Stack price info vertically */
+        align-items: center;
+    }
+
+    .view-details-btn {
+        width: 80%;
+        /* Widen the button */
+        max-width: 300px;
+        margin: 20px auto 0;
+        /* Center the button */
+    }
+
+    /* Map section becomes static */
+    .map-section {
+        position: static;
+        /* Remove sticky behavior */
+        top: auto;
+    }
+
+    /* Footer adjustments (already handled in previous responsive code) */
+    .footer-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .footer-logo,
+    .quick-links,
+    .contact-info {
+        margin: 0 0 40px 0;
+        min-width: unset;
+        width: 100%;
+    }
+
+    .quick-links h3::after,
+    .contact-info h3::after {
+        margin: 10px auto 0;
+    }
+
+    .quick-links ul li,
+    .contact-info ul li {
+        justify-content: center;
+    }
+}
+
+/* Smaller tablets and mobile landscape (max-width: 768px) */
+@media (max-width: 768px) {
+
+    /* Header and Navigation for mobile */
+    .header .container {
+        flex-direction: row;
+        /* Keep logo and hamburger on one row */
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .header .navbar {
+        display: none;
+        /* Hide main navbar by default */
+        flex-direction: column;
+        width: 100%;
+        background-color: #1a2a3a;
+        /* Background when opened */
+        position: absolute;
+        top: 70px;
+        /* Position below header */
+        left: 0;
+        right: 0;
+        padding: 20px 0;
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        max-height: 0;
+        /* Initial hidden state for animation */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+        order: unset;
+        /* Reset order */
+        margin-top: 0;
+    }
+
+    .header .navbar.active {
+        display: flex;
+        /* Show navbar when active */
+        max-height: 400px;
+        /* Max height for open state */
+    }
+
+    .header .navbar ul {
+        flex-direction: column;
+        width: 100%;
+        text-align: center;
+    }
+
+    .header .navbar ul li {
+        margin: 10px 0;
+        width: 100%;
+    }
+
+    .header .navbar ul li a {
+        padding: 10px 0;
+        display: block;
+    }
+
+    /* Dropdown inside mobile menu */
+    .dropdown-content {
+        position: static;
+        /* Remove absolute positioning */
+        width: 100%;
+        box-shadow: none;
+        background-color: rgba(0, 0, 0, 0.2);
+        /* Slightly transparent */
+        border-radius: 0;
+    }
+
+    .dropdown-content a {
+        padding-left: 40px;
+        /* Indent dropdown items */
+    }
+
+    .top-right-nav {
+        margin-left: 0;
+        /* Remove margin */
+        width: auto;
+        justify-content: flex-end;
+        /* Push to right */
+        order: unset;
+        /* Reset order */
+        margin-top: 0;
+    }
+
+    .top-right-nav .profile-link {
+        display: none;
+        /* Hide profile link to save space, can be moved to hamburger menu if needed */
+    }
+
+    .hamburger-menu {
+        display: block;
+        /* Show hamburger icon */
+    }
+
+    /* Hero section adjustments */
+    .hero {
+        height: 250px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+    }
+
+    .hero-description {
+        font-size: 15px;
+    }
+
+    .map-placeholder {
+        height: 250px;
+    }
+}
+
+/* Large smartphones (max-width: 576px) */
+@media (max-width: 576px) {
+    .container {
+        padding: 0 15px;
+        /* Reduce container padding */
+    }
+
+    .header .logo img {
+        height: 35px;
+    }
+
+    .header .logo span {
+        font-size: 20px;
+    }
+
+    .top-right-nav .logout-btn {
+        padding: 6px 15px;
+        font-size: 14px;
+    }
+
+    .hero {
+        height: 200px;
+    }
+
+    .hero h1 {
+        font-size: 26px;
+    }
+
+    .hero-description {
+        font-size: 13px;
+    }
+
+    .main-content-wrapper {
+        padding: 40px 0;
+    }
+
+    .room-card {
+        padding-bottom: 20px;
+        /* Add padding for button */
+    }
+
+    .room-image {
+        height: 200px;
+        /* Adjust image height for smaller screens */
+    }
+
+    .room-details h3 {
+        font-size: 20px;
+    }
+
+    .room-details .location-info {
+        font-size: 13px;
+        text-align: left;
+        /* Revert alignment for better readability */
+        justify-content: flex-start;
+        margin-left: 10px;
+        /* Add some indent */
+    }
+
+    .room-details .features {
+        grid-template-columns: 1fr;
+        /* Features become single column */
+        gap: 5px;
+        text-align: left;
+        margin-left: 10px;
+        /* Add some indent */
+    }
+
+    .room-details .features li {
+        justify-content: flex-start;
+    }
+
+    .room-details .price-info {
+        align-items: flex-start;
+        /* Revert alignment for better readability */
+        margin-left: 10px;
+        /* Add some indent */
+    }
+
+    .view-details-btn {
+        font-size: 14px;
+        padding: 8px 15px;
+        width: 90%;
+        /* Make button wider */
+    }
+
+    .map-section {
+        padding: 15px;
+    }
+
+    .map-section h2 {
+        font-size: 20px;
+    }
+
+    .map-placeholder {
+        height: 200px;
+    }
+
+    .map-placeholder .map-address {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    /* Footer adjustments */
+    .footer-logo span {
+        font-size: 24px;
+    }
+
+    .footer-logo p {
+        font-size: 13px;
+    }
+
+    .quick-links h3,
+    .contact-info h3 {
+        font-size: 18px;
+    }
+
+    .quick-links ul li,
+    .contact-info ul li {
+        font-size: 13px;
+    }
+}
+
+/* Very small smartphones (max-width: 400px) */
+@media (max-width: 400px) {
+    .header .navbar.active {
+        top: 60px;
+        /* Adjust top position for smaller header */
+    }
+
+    .hero h1 {
+        font-size: 22px;
+    }
+
+    .hero-description {
+        font-size: 11px;
+    }
+
+    .room-details .features {
+        font-size: 13px;
+    }
+
+    .room-details .price-info .price {
+        font-size: 20px;
+    }
+}

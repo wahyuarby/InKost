@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pembayaran Kost - INKOST</title>
+    <link rel="stylesheet" href="Ckost.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="Img/INKOST.png" alt="INKOST Logo"> <span>INKOST</span>
+            </div>
+            <nav class="navbar">
+                <ul>
+                    <li><a href="home.html">BERANDA</a></li>
+                    <li><a href="tentang_kami.html">TENTANG KAMI</a></li>
+                    <li><a href="profil_inkos.html">PROFIL</a></li>
+                    <li><a href="index.html" class="logout-btn">LOGOUT</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <p class="breadcrumb">HOMEPAGE <span>&rsaquo;</span> PEMBAYARAN KOST</p>
+            <h1>PEMBAYARAN KOST</h1>
+            <p class="hero-description">Aplikasi manajemen kost modern untuk pemilik dan penyewa. Semuanya jadi praktis
+                dari pembayaran hingga komunikasi.</p>
+        </div>
+    </section>
+
+    <section class="payment-section">
+        <div class="container payment-card">
+            <div class="payment-header">
+                <div class="payment-icon">
+                    <i class="fas fa-dollar-sign"></i>
+                </div>
+                <h2>PEMBAYARAN KOST</h2>
+                <p><strong>BAGUS</strong> | <strong>No. Kamar 01</strong></p>
+                <p>Tipe Kamar | Kamar Mandi Dalam</p>
+                <p class="payment-period"><i class="far fa-calendar-alt"></i> Periode Pembayaran 1 Mei - 1 Juni 2025</p>
+            </div>
+            <div class="payment-table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>NO.</th>
+                            <th>TANGGAL</th>
+                            <th>NOMINAL</th>
+                            <th>STATUS</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>01</td>
+                            <td>02/06/2025</td>
+                            <td>RP. 1.500.000</td>
+                            <td><button class="status-btn status-bayar" data-payment-id="kost01">Pembayaran</button></td>
+                        </tr>
+                        <tr>
+                            <td>02</td>
+                            <td>02/05/2025</td>
+                            <td>RP. 1.500.000</td>
+                            <td><span class="status status-lunas">LUNAS</span></td>
+                        </tr>
+                        <tr>
+                            <td>03</td>
+                            <td>02/04/2025</td>
+                            <td>RP. 1.500.000</td>
+                            <td><span class="status status-lunas">LUNAS</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="table-pagination">
+                <a href="#" class="prev-arrow"><i class="fas fa-arrow-left"></i></a>
+                <a href="#" class="next-arrow"><i class="fas fa-arrow-right"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-content">
+            <div class="footer-logo">
+                <img src="Img/INKOST.png" alt="INKOST Logo"> <span>INKOST</span>
+                <p>Aplikasi terbaik untuk layanan kost di seluruh Indonesia - nyaman, aman, dan praktis.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+            <div class="quick-links">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Beranda</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Tentang Kami</a></li>
+                    <li><a href="#"><i class="fas fa-caret-right"></i> Profile</a></li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <h3>Tetap bersama kami</h3>
+                <ul>
+                    <li><i class="fas fa-map-marker-alt"></i> Di Yogyakarta, Indonesia</li>
+                    <li><i class="fas fa-envelope"></i> Inkost123@Email.com</li>
+                    <li><i class="fas fa-phone-alt"></i> (+62) 123 456 789</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>INKOST</p>
+        </div>
+    </footer>
+
+    <div id="paymentModal" class="modal">
+        <div class="modal-content">
+            <span class="close-button">&times;</span>
+            <h2>INVOICE PEMBAYARAN KOST</h2>
+            <div class="invoice-details">
+                <p><strong>Nama Penghuni:</strong> Bagus</p>
+                <p><strong>Nomor Kamar:</strong> 01</p>
+                <p><strong>Tipe Kamar:</strong> Kamar Mandi Dalam</p>
+                <p><strong>Periode Pembayaran:</strong> 1 Mei - 1 Juni 2025</p>
+                <h3>Total Pembayaran: <span class="total-amount">RP. 1.500.000</span></h3>
+                <p class="warning-text"><i class="fas fa-exclamation-triangle"></i> Mohon selesaikan pembayaran sebelum tanggal 02 Juni 2025.</p>
+            </div>
+            <div class="payment-options">
+                <h4>Pilih Metode Pembayaran:</h4>
+                <div class="method-card">
+                    <img src="Img/logo-bca.png" alt="Bank BCA">
+                    <span>Transfer Bank BCA</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="method-card">
+                    <img src="Img/logo-gopay.png" alt="GoPay">
+                    <span>GoPay</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+                <div class="method-card">
+                    <img src="Img/logo-dana.png" alt="DANA">
+                    <span>DANA</span>
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </div>
+            <button id="payNowBtn" class="btn-pay-now">Bayar Sekarang</button>
+        </div>
+    </div>
+
+    <div id="paymentNotification" class="notification">
+        Pembayaran berhasil!
+    </div>
+
+    <script src="PembayaranKost.js"></script>
+</body>
+
+</html>

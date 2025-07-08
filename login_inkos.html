@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selamat Datang!</title>
+    <link rel="stylesheet" href="login.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="login-container">
+        <div class="form-section">
+            <div class="form-wrapper">
+                <h1>SELAMAT DATANG!</h1>
+                <p>Selamat datang! Nikmati kemudahan mengelola dan mengakses informasi kost Anda di satu tempat.</p>
+
+                <form action="#">
+                    <div class="input-group">
+                        <label for="username">Username Pengguna</label>
+                        <input type="text" id="username" name="username">
+                    </div>
+
+                    <div class="input-group">
+                        <div class="password-header">
+                            <label for="password">Password</label>
+                            <a href="#" class="forgot-password">Lupa Password?</a>
+                        </div>
+                        <input type="password" id="password" name="password">
+                    </div>
+
+                    <button type="button" class="btn-login" onclick="window.location.href='home.html'">Masuk</button>
+                </form>
+
+                <div class="separator">
+                    <span>Or</span>
+                </div>
+
+                <div class="social-login">
+                    <button class="btn-social">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M21.35,11.1H12.18V13.83H18.69C18.36,17.64 15.19,19.27 12.19,19.27C8.36,19.27 5,16.25 5,12C5,7.75 8.36,4.73 12.19,4.73C15.28,4.73 17.1,6.7 17.1,6.7L19,4.72C19,4.72 16.56,2 12.19,2C6.42,2 2.03,6.8 2.03,12C2.03,17.2 6.42,22 12.19,22C17.96,22 21.54,18.27 21.54,12.33C21.54,11.76 21.48,11.43 21.35,11.1Z"/></svg>
+                        <span>Sign In with Google</span>
+                    </button>
+                    <button class="btn-social">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"><path fill="currentColor" d="M19.3,3.87A4.2,4.2,0,0,0,14.65,3c-2.3,0-4,1.57-5.1,1.57S7.35,3,5,3A4.33,4.33,0,0,0,.65,7.23,6.44,6.44,0,0,0,3.3,12.5,5.65,5.65,0,0,0,6,17.77c1.3,2.17,3.3,4.2,5.5,4.2s2.7-1.3,4.4-1.3,2.8,1.3,4.4,1.3,3.2-2.33,3.2-5.77A4.83,4.83,0,0,0,19.3,3.87ZM12,18.17c-1.3,0-2.3-.9-3.2-2.17a9.38,9.38,0,0,1,-.8-3.4,4.23,4.23,0,0,1,3.4-3.77c.4-.07,2.2-.37,3.8,1.1C13.2,11.1,12.3,18.17,12,18.17Z"/></svg>
+                        <span>Sign In with Apple</span>
+                    </button>
+                </div>
+
+                <div class="signup-link">
+                    <p>Belum punya akun? <a href="#">Daftar</a></p>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="image-section">
+            <img src="image_7f4952.jpg" alt="Foto gedung kost">
+            </div> -->
+    </div>
+
+</body>
+</html>
